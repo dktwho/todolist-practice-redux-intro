@@ -15,6 +15,7 @@ import {
     todolistsReducer
 } from "./state/todolists-reducer";
 import {
+    ActionsTasksType,
     addTaskAC,
     changeTaskStatusAC,
     changeTaskTitleAC,
@@ -43,7 +44,7 @@ function AppWithUseReducer() {
         {id: todolistId2, title: "What to buy", filter: "all"}
     ])
 
-    let [tasks, dispatchToTasks] = useReducer(tasksReducer, {
+    let [tasks, dispatchToTasks] = useReducer<Reducer<TasksStateType, ActionsTasksType>>(tasksReducer, {
         [todolistId1]: [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JS", isDone: true}
