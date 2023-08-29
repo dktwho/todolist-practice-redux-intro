@@ -7,14 +7,20 @@ import {AppBar, Button, Container, Grid, Paper, Toolbar, Typography} from "@mui/
 import IconButton from "@mui/material/IconButton/IconButton";
 import {Menu} from "@mui/icons-material";
 import {
-    ActionsType,
+    ActionsTodolistsType,
     addTodolistAC,
     changeTodolistFilterAC,
     changeTodolistTitleAC,
     removeTodolistAC,
     todolistsReducer
 } from "./state/todolists-reducer";
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./state/tasks-reducer";
+import {
+    addTaskAC,
+    changeTaskStatusAC,
+    changeTaskTitleAC,
+    removeTaskAC,
+    tasksReducer
+} from "./state/tasks-reducer";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -28,12 +34,11 @@ export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
-
 function AppWithUseReducer() {
     let todolistId1 = v1();
     let todolistId2 = v1();
 
-    let [todolists, dispatchToTodolist] = useReducer<Reducer<Array<TodolistType>, ActionsType>>( todolistsReducer, [
+    let [todolists, dispatchToTodolist] = useReducer<Reducer<Array<TodolistType>, ActionsTodolistsType>>(todolistsReducer, [
         {id: todolistId1, title: "What to learn", filter: "all"},
         {id: todolistId2, title: "What to buy", filter: "all"}
     ])
@@ -88,7 +93,7 @@ function AppWithUseReducer() {
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="menu">
-                        <Menu />
+                        <Menu/>
                     </IconButton>
                     <Typography variant="h6">
                         News
