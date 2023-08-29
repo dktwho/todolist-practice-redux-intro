@@ -78,8 +78,9 @@ function AppWithUseReducer() {
     }
 
     function removeTodolist(id: string) {
-        dispatchToTodolist(removeTodolistAC(id))
-        dispatchToTasks(removeTodolistAC(id))
+        let action = removeTodolistAC(id)
+        dispatchToTodolist(action)
+        dispatchToTasks(action)
     }
 
     function changeTodolistTitle(id: string, title: string) {
